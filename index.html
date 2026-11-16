@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Mobil CV Oluşturucu — Ücretsiz & Çevrimdışı CV Hazırlayıcı</title>
+    <meta name="description" content="Ücretsiz, reklamsız ve gizlilik odaklı mobil uyumlu CV hazırlama uygulaması. 20 modern şablon, PDF/Word çıktısı ve çevrimdışı çalışma desteği.">
+    <meta property="og:title" content="Mobil CV Oluşturucu — Ücretsiz CV Hazırlayıcı">
+    <meta property="og:description" content="20 modern şablon, gelişmiş renk ve yazı tipi ayarları, QR kod desteği ve tek tıkla PDF çıktısı. Verileriniz yalnızca cihazınızda saklanır.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="./icon-512.png">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- PWA Manifest & Icon -->
+    <link rel="icon" type="image/svg+xml" href="./icon.svg">
+    <link rel="apple-touch-icon" href="./icon-192.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2563eb">
+</head>
+
+<body>
+
+    <header class="app-header">
+        <div class="header-content">
+            <h1><span class="material-icons-round">description</span> CV Hazırlayıcı</h1>
+            <div class="header-actions">
+                <button id="lang-toggle-btn" class="pill-btn" title="CV Başlık Dilini Değiştir (TR/EN)">TR</button>
+                <button id="design-btn" class="icon-btn" title="Tasarım Ayarları"><span class="material-icons-round">palette</span></button>
+            </div>
+        </div>
+        <nav class="app-tabs">
+            <button class="tab-btn active" data-tab="editor">düzenle</button>
+            <button class="tab-btn" data-tab="preview">önizle</button>
+        </nav>
+    </header>
+
+    <!-- DESIGN SETTINGS MODAL -->
+    <div id="design-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Tasarım Ayarları</h2>
+                <button id="close-design-btn" class="close-btn"><span class="material-icons-round">close</span></button>
+            </div>
+
+            <div class="modal-body">
+                <!-- Template Selection (20 Modern Templates) -->
+                <h3>Şablon Seçimi (20)</h3>
+                <div class="template-grid">
+                    <div class="template-item active" data-layout="modern">
+                        <div class="t-preview t-modern"></div>
+                        <span>Modern</span>
+                    </div>
+                    <div class="template-item" data-layout="sidebar-left">
+                        <div class="t-preview t-sidebar-left"></div>
+                        <span>Sol Panel</span>
+                    </div>
+                    <div class="template-item" data-layout="executive">
+                        <div class="t-preview t-executive"></div>
+                        <span>Yönetici</span>
+                    </div>
+                    <div class="template-item" data-layout="nordic">
+                        <div class="t-preview t-nordic"></div>
+                        <span>İskandinav</span>
+                    </div>
+                    <div class="template-item" data-layout="ats-pro">
+                        <div class="t-preview t-ats-pro"></div>
+                        <span>ATS Modern</span>
+                    </div>
+                    <div class="template-item" data-layout="corporate">
+                        <div class="t-preview t-corporate"></div>
+                        <span>Kurumsal</span>
+                    </div>
+                    <div class="template-item" data-layout="metro">
+                        <div class="t-preview t-metro"></div>
+                        <span>Metro Kart</span>
+                    </div>
+                    <div class="template-item" data-layout="swiss">
+                        <div class="t-preview t-swiss"></div>
+                        <span>Swiss Grid</span>
+                    </div>
+                    <div class="template-item" data-layout="split-banner">
+                        <div class="t-preview t-split-banner"></div>
+                        <span>Tam Banner</span>
+                    </div>
+                    <div class="template-item" data-layout="tech">
+                        <div class="t-preview t-tech"></div>
+                        <span>Teknoloji</span>
+                    </div>
+                    <div class="template-item" data-layout="timeline">
+                        <div class="t-preview t-timeline"></div>
+                        <span>Zaman Tüneli</span>
+                    </div>
+                    <div class="template-item" data-layout="compact">
+                        <div class="t-preview t-compact"></div>
+                        <span>Kompakt</span>
+                    </div>
+                    <div class="template-item" data-layout="gradient-accent">
+                        <div class="t-preview t-gradient-accent"></div>
+                        <span>Vurgulu</span>
+                    </div>
+                    <div class="template-item" data-layout="classic">
+                        <div class="t-preview t-classic"></div>
+                        <span>Klasik</span>
+                    </div>
+                    <div class="template-item" data-layout="elegant">
+                        <div class="t-preview t-elegant"></div>
+                        <span>Zarif</span>
+                    </div>
+                    <div class="template-item" data-layout="silicon">
+                        <div class="t-preview t-silicon"></div>
+                        <span>Silikon Vadisi</span>
+                    </div>
+                    <div class="template-item" data-layout="europa">
+                        <div class="t-preview t-europa"></div>
+                        <span>Avrupa Modern</span>
+                    </div>
+                    <div class="template-item" data-layout="mono-minimal">
+                        <div class="t-preview t-mono-minimal"></div>
+                        <span>Editoryal</span>
+                    </div>
+                    <div class="template-item" data-layout="soft-pastel">
+                        <div class="t-preview t-soft-pastel"></div>
+                        <span>Pastel Kart</span>
+                    </div>
+                    <div class="template-item" data-layout="bold-frame">
+                        <div class="t-preview t-bold-frame"></div>
+                        <span>Çerçeveli</span>
+                    </div>
+                </div>
+
+                <!-- Color Presets -->
+                <h3>Hazır Renk Paletleri</h3>
+                <div id="palette-presets" class="palette-presets"></div>
+
+                <!-- Color Settings -->
+                <h3>Özel Renk Ayarları</h3>
+                <div class="color-settings">
+                    <div class="color-control">
+                        <label>Vurgu Rengi</label>
+                        <div class="color-input-wrapper">
+                            <input type="color" id="color-accent" value="#2563eb">
+                        </div>
+                    </div>
+                    <div class="color-control">
+                        <label>Yazı Rengi</label>
+                        <div class="color-input-wrapper">
+                            <input type="color" id="color-text" value="#1f2937">
+                        </div>
+                    </div>
+                    <div class="color-control">
+                        <label>Arka Plan</label>
+                        <div class="color-input-wrapper">
+                            <input type="color" id="color-bg" value="#ffffff">
+                        </div>
+                    </div>
+                    <div class="color-control">
+                        <label>Yan Panel / Kutu</label>
+                        <div class="color-input-wrapper">
+                            <input type="color" id="color-secondary" value="#f3f4f6">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Typography & Page Fit -->
+                <h3 style="margin-top: 1.5rem;">Yazı Tipi & Sayfa Sığdırma</h3>
+                <div class="typography-settings">
+                    <div class="input-group">
+                        <label>Yazı Tipi (Font)</label>
+                        <select id="font-family-select">
+                            <option value="template">Şablona Özel (Varsayılan)</option>
+                            <option value="'Roboto', sans-serif">Roboto (Modern)</option>
+                            <option value="'Inter', sans-serif">Inter (Temiz Sans)</option>
+                            <option value="'Georgia', 'Times New Roman', serif">Georgia (Klasik Serif)</option>
+                            <option value="'Playfair Display', Georgia, serif">Playfair Display (Zarif)</option>
+                            <option value="'Courier New', monospace">Courier New (Teknik)</option>
+                        </select>
+                    </div>
+                    <div class="range-control">
+                        <label>Yazı Boyutu: <strong id="font-size-val">10.5pt</strong></label>
+                        <input type="range" id="font-size-range" min="8.5" max="12.5" step="0.5" value="10.5">
+                    </div>
+                    <div class="range-control">
+                        <label>Satır Aralığı: <strong id="line-height-val">1.5</strong></label>
+                        <input type="range" id="line-height-range" min="1.2" max="1.75" step="0.05" value="1.5">
+                    </div>
+                    <div class="range-control">
+                        <label>Sayfa Kenar Boşluğu: <strong id="page-padding-val">10mm</strong></label>
+                        <input type="range" id="page-padding-range" min="6" max="16" step="1" value="10">
+                    </div>
+                </div>
+
+                <div class="modal-footer-actions">
+                    <button type="button" id="reset-design-btn" class="secondary-btn full-width">
+                        <span class="material-icons-round">restart_alt</span> Tasarımı Varsayılana Sıfırla
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main class="app-container">
+        <!-- EDITOR SECTION -->
+        <section id="editor" class="tab-content active">
+            <div class="form-container">
+
+                <!-- Taslaklar & Veri Yönetimi -->
+                <div class="card toolbar-card">
+                    <div class="profile-bar">
+                        <div class="profile-select-wrap">
+                            <label for="profile-select">Aktif CV Taslağı</label>
+                            <select id="profile-select"></select>
+                        </div>
+                        <div class="profile-actions">
+                            <button type="button" id="new-profile-btn" class="mini-action-btn" title="Yeni Taslak Oluştur">
+                                <span class="material-icons-round">add</span>
+                            </button>
+                            <button type="button" id="dup-profile-btn" class="mini-action-btn" title="Taslağı Kopyala">
+                                <span class="material-icons-round">content_copy</span>
+                            </button>
+                            <button type="button" id="rename-profile-btn" class="mini-action-btn" title="Taslağı Yeniden Adlandır">
+                                <span class="material-icons-round">edit</span>
+                            </button>
+                            <button type="button" id="delete-profile-btn" class="mini-action-btn danger" title="Taslağı Sil">
+                                <span class="material-icons-round">delete</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="utility-bar">
+                        <button type="button" id="fill-demo-btn" class="chip-btn">
+                            <span class="material-icons-round">auto_fix_high</span> Örnek Doldur
+                        </button>
+                        <button type="button" id="export-json-btn" class="chip-btn">
+                            <span class="material-icons-round">download</span> Yedek Al (JSON)
+                        </button>
+                        <button type="button" id="import-json-btn" class="chip-btn">
+                            <span class="material-icons-round">upload</span> Yedek Yükle
+                        </button>
+                        <input type="file" id="import-json-input" accept=".json,application/json" hidden>
+                        <button type="button" id="clear-data-btn" class="chip-btn danger-outline">
+                            <span class="material-icons-round">delete_sweep</span> Temizle
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Kişisel Bilgiler -->
+                <div class="card">
+                    <h2 class="card-title">Kişisel Bilgiler & Bağlantılar</h2>
+
+                    <!-- Fotoğraf Yükleme -->
+                    <div class="photo-upload-row">
+                        <div class="editor-photo-box">
+                            <img id="editor-photo-preview" class="hidden" alt="Profil Önizleme">
+                            <span id="editor-photo-placeholder" class="material-icons-round">person</span>
+                        </div>
+                        <div class="photo-upload-controls">
+                            <div class="photo-btn-group">
+                                <button type="button" id="upload-photo-btn" class="chip-btn">
+                                    <span class="material-icons-round">add_a_photo</span> Fotoğraf Yükle
+                                </button>
+                                <button type="button" id="remove-photo-btn" class="chip-btn danger-outline hidden">
+                                    <span class="material-icons-round">hide_image</span> Kaldır
+                                </button>
+                                <input type="file" id="photo-upload" accept="image/*" hidden>
+                            </div>
+                            <div class="photo-shape-row">
+                                <label for="photo-shape">Şekil:</label>
+                                <select id="photo-shape">
+                                    <option value="circle">Yuvarlak</option>
+                                    <option value="rounded">Kare (Yumuşak)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Ad Soyad</label>
+                        <input type="text" id="fullname" placeholder="Adınız Soyadınız">
+                    </div>
+                    <div class="input-group">
+                        <label>Ünvan / Meslek</label>
+                        <input type="text" id="jobtitle" placeholder="Örn: Yazılım Mühendisi">
+                    </div>
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label>Telefon</label>
+                            <input type="tel" id="phone" placeholder="0555 123 45 67">
+                        </div>
+                        <div class="input-group">
+                            <label>E-posta</label>
+                            <input type="email" id="email" placeholder="ornek@email.com">
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>Adres / Şehir</label>
+                        <input type="text" id="address" placeholder="İstanbul, Türkiye">
+                    </div>
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label>LinkedIn</label>
+                            <input type="url" id="linkedin" placeholder="https://linkedin.com/in/...">
+                        </div>
+                        <div class="input-group">
+                            <label>GitHub</label>
+                            <input type="url" id="github" placeholder="https://github.com/...">
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>Portfolyo / Web Sitesi</label>
+                        <input type="url" id="website" placeholder="https://siteniz.com">
+                    </div>
+
+                    <!-- QR Kod Ayarı -->
+                    <div class="qr-settings-box">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="show-qr">
+                            <span>CV'de QR Kod Göster</span>
+                        </label>
+                        <select id="qr-source" title="QR Kod Kaynağı">
+                            <option value="auto">Otomatik (Web / LinkedIn / GitHub / E-posta)</option>
+                            <option value="website">Web Sitesi</option>
+                            <option value="linkedin">LinkedIn</option>
+                            <option value="github">GitHub</option>
+                            <option value="email">E-posta</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Ana Kolon Bölümleri (Sıralanabilir & Gizlenebilir) -->
+                <div id="main-cards-container">
+                    <!-- Hakkımda -->
+                    <div class="card" data-section="summary" data-col="main">
+                        <div class="card-header-row">
+                            <h2 class="card-title">Hakkımda (Özet)</h2>
+                            <div class="section-controls">
+                                <button type="button" class="mini-icon-btn" onclick="moveSection('main', 'summary', -1)" title="Yukarı Taşı"><span class="material-icons-round">arrow_upward</span></button>
+                                <button type="button" class="mini-icon-btn" onclick="moveSection('main', 'summary', 1)" title="Aşağı Taşı"><span class="material-icons-round">arrow_downward</span></button>
+                                <button type="button" class="mini-icon-btn vis-btn" data-vis="summary" onclick="toggleSectionVis('summary')" title="Göster / Gizle"><span class="material-icons-round">visibility</span></button>
+                            </div>
+                        </div>
+                        <div class="input-group" style="margin-bottom: 0;">
+                            <textarea id="summary" rows="3" placeholder="Kendinizden kısaca bahsedin..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- İş Deneyimi -->
+                    <div class="card" data-section="experience" data-col="main">
+                        <div class="card-header-row">
+                            <h2 class="card-title">İş Deneyimi <button type="button" class="add-btn" onclick="addExperience()">+ Ekle</button></h2>
+                            <div class="section-controls">
+                                <button type="button" class="mini-icon-btn" onclick="moveSection('main', 'experience', -1)" title="Yukarı Taşı"><span class="material-icons-round">arrow_upward</span></button>
+                                <button type="button" class="mini-icon-btn" onclick="moveSection('main', 'experience', 1)" title="Aşağı Taşı"><span class="material-icons-round">arrow_downward</span></button>
+                                <button type="button" class="mini-icon-btn vis-btn" data-vis="experience" onclick="toggleSectionVis('experience')" title="Göster / Gizle"><span class="material-icons-round">visibility</span></button>
+                            </div>
+                        </div>
+                        <div id="experience-list"></div>
+                    </div>
+
+                    <!-- Eğitim -->
+                    <div class="card" data-section="education" data-col="main">
+                        <div class="card-header-row">
+                            <h2 class="card-title">Eğitim <button type="button" class="add-btn" onclick="addEducation()">+ Ekle</button></h2>
+                            <div class="section-controls">
+                                <button type="button" class="mini-icon-btn" onclick="moveSection('main', 'education', -1)" title="Yukarı Taşı"><span class="material-icons-round">arrow_upward</span></button>
+                                <button type="button" class="mini-icon-btn" onclick="moveSection('main', 'education', 1)" title="Aşağı Taşı"><span class="material-icons-round">arrow_downward</span></button>
+                                <button type="button" class="mini-icon-btn vis-btn" data-vis="education" onclick="toggleSectionVis('education')" title="Göster / Gizle"><span class="material-icons-round">visibility</span></button>
+                            </div>
+                        </div>
+                        <div id="education-list"></div>
+                    </div>
+
+                    <!-- Projeler -->
+                    <div class="card" data-section="projects" data-col="main">
+                        <div class="card-header-row">
+                            <h2 class="card-title">Projeler <button type="button" class="add-btn" onclick="addProject()">+ Ekle</button></h2>
+                            <div class="section-controls">
+                                <button type="button" class="mini-icon-btn" onclick="moveSection('main', 'projects', -1)" title="Yukarı Taşı"><span class="material-icons-round">arrow_upward</span></button>
+                                <button type="button" class="mini-icon-btn" onclick="moveSection('main', 'projects', 1)" title="Aşağı Taşı"><span class="material-icons-round">arrow_downward</span></button>
+                                <button type="button" class="mini-icon-btn vis-btn" data-vis="projects" onclick="toggleSectionVis('projects')" title="Göster / Gizle"><span class="material-icons-round">visibility</span></button>
+                            </div>
+                        </div>
+                        <div id="projects-list"></div>
+                    </div>
+                </div>
+
+                <!-- Yan / Ek Bölümler (Sıralanabilir & Gizlenebilir) -->
+                <div id="side-cards-container">
+                    <!-- Yetenekler -->
+                    <div class="card" data-section="skills" data-col="side">
+                        <div class="card-header-row">
+                            <h2 class="card-title">Yetenekler <button type="button" class="add-btn" onclick="addSkill()">+ Ekle</button></h2>
+                            <div class="section-controls">
+                                <button type="button" class="mini-icon-btn" onclick="moveSection('side', 'skills', -1)" title="Yukarı Taşı"><span class="material-icons-round">arrow_upward</span></button>
+                                <button type="button" class="mini-icon-btn" onclick="moveSection('side', 'skills', 1)" title="Aşağı Taşı"><span class="material-icons-round">arrow_downward</span></button>
+                                <button type="button" class="mini-icon-btn vis-btn" data-vis="skills" onclick="toggleSectionVis('skills')" title="Göster / Gizle"><span class="material-icons-round">visibility</span></button>
+                            </div>
+                        </div>
+                        <div id="skills-list" class="skills-grid"></div>
+                    </div>
+
+                    <!-- Diller -->
+                    <div class="card" data-section="languages" data-col="side">
+                        <div class="card-header-row">
+                            <h2 class="card-title">Diller <button type="button" class="add-btn" onclick="addLanguage()">+ Ekle</button></h2>
+                            <div class="section-controls">
+                                <button type="button" class="mini-icon-btn" onclick="moveSection('side', 'languages', -1)" title="Yukarı Taşı"><span class="material-icons-round">arrow_upward</span></button>
+                                <button type="button" class="mini-icon-btn" onclick="moveSection('side', 'languages', 1)" title="Aşağı Taşı"><span class="material-icons-round">arrow_downward</span></button>
+                                <button type="button" class="mini-icon-btn vis-btn" data-vis="languages" onclick="toggleSectionVis('languages')" title="Göster / Gizle"><span class="material-icons-round">visibility</span></button>
+                            </div>
+                        </div>
+                        <div id="languages-list"></div>
+                    </div>
+
+                    <!-- Sertifikalar -->
+                    <div class="card" data-section="certificates" data-col="side">
+                        <div class="card-header-row">
+                            <h2 class="card-title">Sertifikalar <button type="button" class="add-btn" onclick="addCertificate()">+ Ekle</button></h2>
+                            <div class="section-controls">
+                                <button type="button" class="mini-icon-btn" onclick="moveSection('side', 'certificates', -1)" title="Yukarı Taşı"><span class="material-icons-round">arrow_upward</span></button>
+                                <button type="button" class="mini-icon-btn" onclick="moveSection('side', 'certificates', 1)" title="Aşağı Taşı"><span class="material-icons-round">arrow_downward</span></button>
+                                <button type="button" class="mini-icon-btn vis-btn" data-vis="certificates" onclick="toggleSectionVis('certificates')" title="Göster / Gizle"><span class="material-icons-round">visibility</span></button>
+                            </div>
+                        </div>
+                        <div id="certificates-list"></div>
+                    </div>
+
+                    <!-- Referanslar -->
+                    <div class="card" data-section="references" data-col="side">
+                        <div class="card-header-row">
+                            <h2 class="card-title">Referanslar <button type="button" class="add-btn" onclick="addReference()">+ Ekle</button></h2>
+                            <div class="section-controls">
+                                <button type="button" class="mini-icon-btn" onclick="moveSection('side', 'references', -1)" title="Yukarı Taşı"><span class="material-icons-round">arrow_upward</span></button>
+                                <button type="button" class="mini-icon-btn" onclick="moveSection('side', 'references', 1)" title="Aşağı Taşı"><span class="material-icons-round">arrow_downward</span></button>
+                                <button type="button" class="mini-icon-btn vis-btn" data-vis="references" onclick="toggleSectionVis('references')" title="Göster / Gizle"><span class="material-icons-round">visibility</span></button>
+                            </div>
+                        </div>
+                        <div id="references-list"></div>
+                    </div>
+                </div>
+
+                <div class="action-bar-bottom">
+                    <button type="button" class="primary-btn full-width" onclick="switchTab('preview')">Önizlemeye Git</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- PREVIEW SECTION -->
+        <section id="preview" class="tab-content">
+            <div class="preview-toolbar">
+                <button type="button" id="preview-lang-btn" class="secondary-btn">
+                    <span class="material-icons-round">translate</span> <span id="preview-lang-label">Dil: TR</span>
+                </button>
+                <button type="button" class="secondary-btn" onclick="downloadWord()">
+                    <span class="material-icons-round">description</span> Word (Metin) İndir
+                </button>
+                <button type="button" class="primary-btn" onclick="printCV()">
+                    <span class="material-icons-round">picture_as_pdf</span> PDF İndir
+                </button>
+            </div>
+            <p class="preview-hint">💡 İpucu: PDF İndir'e bastığınızda açılan yazdırma ekranında "PDF olarak kaydet" seçeneğini kullanın.</p>
+
+            <div class="cv-paper-container">
+                <div id="cv-scale-stage" class="cv-scale-stage">
+                <div id="cv-paper" class="cv-paper modern">
+
+                    <div class="cv-header">
+                        <div class="cv-header-top">
+                            <div id="p-photo-wrap" class="cv-photo-wrap hidden">
+                                <img id="p-photo" alt="Profil Fotoğrafı">
+                            </div>
+                            <div class="cv-header-info">
+                                <h1 id="p-fullname">Ad Soyad</h1>
+                                <p id="p-jobtitle" class="cv-jobtitle">Ünvan</p>
+                                <div class="cv-contact-info">
+                                    <span id="p-phone"></span>
+                                    <span id="p-email"></span>
+                                    <span id="p-address"></span>
+                                    <span id="p-linkedin"></span>
+                                    <span id="p-github"></span>
+                                    <span id="p-website"></span>
+                                </div>
+                            </div>
+                            <div id="p-qr-wrap" class="cv-qr-wrap hidden">
+                                <img id="p-qr-img" alt="QR Kod">
+                                <span id="p-qr-label" class="cv-qr-label"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cv-body">
+                        <div class="cv-main-col" id="p-main-col">
+                            <div class="cv-section" id="sec-summary" data-section="summary">
+                                <h3 data-i18n="summary">Hakkımda</h3>
+                                <p id="p-summary"></p>
+                            </div>
+
+                            <div class="cv-section" id="sec-experience" data-section="experience">
+                                <h3 data-i18n="experience">İş Deneyimi</h3>
+                                <div id="p-experience-list"></div>
+                            </div>
+
+                            <div class="cv-section" id="sec-education" data-section="education">
+                                <h3 data-i18n="education">Eğitim</h3>
+                                <div id="p-education-list"></div>
+                            </div>
+
+                            <div class="cv-section" id="sec-projects" data-section="projects">
+                                <h3 data-i18n="projects">Projeler</h3>
+                                <div id="p-projects-list"></div>
+                            </div>
+                        </div>
+
+                        <div class="cv-side-col" id="p-side-col">
+                            <div class="cv-section" id="sec-skills" data-section="skills">
+                                <h3 data-i18n="skills">Yetenekler</h3>
+                                <ul id="p-skills-list"></ul>
+                            </div>
+
+                            <div class="cv-section" id="sec-languages" data-section="languages">
+                                <h3 data-i18n="languages">Diller</h3>
+                                <ul id="p-languages-list"></ul>
+                            </div>
+
+                            <div class="cv-section" id="sec-certificates" data-section="certificates">
+                                <h3 data-i18n="certificates">Sertifikalar</h3>
+                                <div id="p-certificates-list"></div>
+                            </div>
+
+                            <div class="cv-section" id="sec-references" data-section="references">
+                                <h3 data-i18n="references">Referanslar</h3>
+                                <div id="p-references-list"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="app-footer">
+            🔒 <strong>Gizlilik Garantisi:</strong> Girdiğiniz veriler hiçbir sunucuya gönderilmez; yalnızca kendi cihazınızda (tarayıcı hafızasında) saklanır.
+        </footer>
+    </main>
+
+    <script src="qrcode.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
