@@ -3,6 +3,66 @@ const STORAGE_KEY = 'cv_builder_profiles_v2';
 
 const I18N = {
     tr: {
+        appTitle: 'CV Hazırlayıcı',
+        tabEditor: 'düzenle',
+        tabPreview: 'önizle',
+        langLabel: 'Dil: TR',
+        designSettings: 'Tasarım Ayarları',
+        templateSelect: 'Şablon Seçimi (20)',
+        palettePresets: 'Hazır Renk Paletleri',
+        customColors: 'Özel Renk Ayarları',
+        colorAccent: 'Vurgu Rengi',
+        colorText: 'Yazı Rengi',
+        colorBg: 'Arka Plan',
+        colorSecondary: 'Yan Panel / Kutu',
+        typography: 'Yazı Tipi & Sayfa Sığdırma',
+        fontFamily: 'Yazı Tipi (Font)',
+        fontTemplate: 'Şablona Özel (Varsayılan)',
+        fontSizeLabel: 'Yazı Boyutu:',
+        lineHeightLabel: 'Satır Aralığı:',
+        pagePaddingLabel: 'Sayfa Kenar Boşluğu:',
+        resetDesign: 'Tasarımı Varsayılana Sıfırla',
+        activeProfile: 'Aktif CV Taslağı',
+        fillDemo: 'Örnek Doldur',
+        exportJson: 'Yedek Al (JSON)',
+        importJson: 'Yedek Yükle',
+        clearBtn: 'Temizle',
+        personalInfo: 'Kişisel Bilgiler & Bağlantılar',
+        uploadPhoto: 'Fotoğraf Yükle',
+        removePhoto: 'Kaldır',
+        photoShape: 'Şekil:',
+        shapeCircle: 'Yuvarlak',
+        shapeRounded: 'Kare (Yumuşak)',
+        lblFullname: 'Ad Soyad',
+        phFullname: 'Adınız Soyadınız',
+        lblJobtitle: 'Ünvan / Meslek',
+        phJobtitle: 'Örn: Yazılım Mühendisi',
+        lblPhone: 'Telefon',
+        phPhone: '0555 123 45 67',
+        lblEmail: 'E-posta',
+        phEmail: 'ornek@email.com',
+        lblAddress: 'Adres / Şehir',
+        phAddress: 'İstanbul, Türkiye',
+        lblLinkedin: 'LinkedIn',
+        lblGithub: 'GitHub',
+        lblWebsite: 'Portfolyo / Web Sitesi',
+        phWebsite: 'https://siteniz.com',
+        showQr: "CV'de QR Kod Göster",
+        qrAuto: 'Otomatik (Web / LinkedIn / GitHub / E-posta)',
+        qrWebsite: 'Web Sitesi',
+        qrLinkedin: 'LinkedIn',
+        qrGithub: 'GitHub',
+        qrEmail: 'E-posta',
+        qrWebLabel: 'Web',
+        qrPortfolioLabel: 'Portfolyo',
+        summaryCard: 'Hakkımda (Özet)',
+        phSummary: 'Kendinizden kısaca bahsedin...',
+        addBtn: '+ Ekle',
+        goToPreview: 'Önizlemeye Git',
+        downloadWord: 'Word (Metin) İndir',
+        downloadPdf: 'PDF İndir',
+        previewHint: '💡 İpucu: PDF İndir\'e bastığınızda açılan yazdırma ekranında "PDF olarak kaydet" seçeneğini kullanın.',
+        privacyFooter: '🔒 <strong>Gizlilik Garantisi:</strong> Girdiğiniz veriler hiçbir sunucuya gönderilmez; yalnızca kendi cihazınızda (tarayıcı hafızasında) saklanır.',
         summary: 'Hakkımda',
         experience: 'İş Deneyimi',
         education: 'Eğitim',
@@ -15,6 +75,66 @@ const I18N = {
         defaultTitle: 'Ünvan'
     },
     en: {
+        appTitle: 'CV Builder',
+        tabEditor: 'editor',
+        tabPreview: 'preview',
+        langLabel: 'Lang: EN',
+        designSettings: 'Design Settings',
+        templateSelect: 'Templates (20)',
+        palettePresets: 'Color Presets',
+        customColors: 'Custom Colors',
+        colorAccent: 'Accent Color',
+        colorText: 'Text Color',
+        colorBg: 'Background',
+        colorSecondary: 'Sidebar / Box',
+        typography: 'Typography & Page Fit',
+        fontFamily: 'Font Family',
+        fontTemplate: 'Template Default',
+        fontSizeLabel: 'Font Size:',
+        lineHeightLabel: 'Line Height:',
+        pagePaddingLabel: 'Page Margin:',
+        resetDesign: 'Reset Design to Default',
+        activeProfile: 'Active CV Draft',
+        fillDemo: 'Fill Sample',
+        exportJson: 'Backup (JSON)',
+        importJson: 'Restore JSON',
+        clearBtn: 'Clear',
+        personalInfo: 'Personal Info & Links',
+        uploadPhoto: 'Upload Photo',
+        removePhoto: 'Remove',
+        photoShape: 'Shape:',
+        shapeCircle: 'Circle',
+        shapeRounded: 'Rounded Square',
+        lblFullname: 'Full Name',
+        phFullname: 'Your Full Name',
+        lblJobtitle: 'Job Title / Profession',
+        phJobtitle: 'e.g. Software Engineer',
+        lblPhone: 'Phone',
+        phPhone: '+1 555 123 4567',
+        lblEmail: 'Email',
+        phEmail: 'name@example.com',
+        lblAddress: 'Location / City',
+        phAddress: 'London, UK',
+        lblLinkedin: 'LinkedIn',
+        lblGithub: 'GitHub',
+        lblWebsite: 'Portfolio / Website',
+        phWebsite: 'https://yoursite.com',
+        showQr: 'Show QR Code on CV',
+        qrAuto: 'Auto (Web / LinkedIn / GitHub / Email)',
+        qrWebsite: 'Website',
+        qrLinkedin: 'LinkedIn',
+        qrGithub: 'GitHub',
+        qrEmail: 'Email',
+        qrWebLabel: 'Web',
+        qrPortfolioLabel: 'Portfolio',
+        summaryCard: 'About Me (Summary)',
+        phSummary: 'Write a brief summary about yourself...',
+        addBtn: '+ Add',
+        goToPreview: 'Go to Preview',
+        downloadWord: 'Download Word (Text)',
+        downloadPdf: 'Download PDF',
+        previewHint: '💡 Tip: In the print dialog opened by Download PDF, choose "Save as PDF".',
+        privacyFooter: '🔒 <strong>Privacy Guarantee:</strong> Your data is never sent to any server; it is stored locally on your own device only.',
         summary: 'About Me',
         experience: 'Work Experience',
         education: 'Education',
@@ -29,12 +149,12 @@ const I18N = {
 };
 
 const PALETTE_PRESETS = [
-    { name: 'Klasik Mavi', accent: '#2563eb', text: '#1f2937', bg: '#ffffff', secondary: '#f3f4f6' },
-    { name: 'Lacivert & Altın', accent: '#1e3a8a', text: '#111827', bg: '#ffffff', secondary: '#fef3c7' },
-    { name: 'Zümrüt Yeşili', accent: '#059669', text: '#1f2937', bg: '#ffffff', secondary: '#ecfdf5' },
-    { name: 'Bordo & Krem', accent: '#9f1239', text: '#292524', bg: '#fffbeb', secondary: '#fef2f2' },
-    { name: 'Gece Modu', accent: '#38bdf8', text: '#f1f5f9', bg: '#0f172a', secondary: '#1e293b' },
-    { name: 'Siyah & Beyaz', accent: '#111827', text: '#111827', bg: '#ffffff', secondary: '#f3f4f6' }
+    { nameTr: 'Klasik Mavi', nameEn: 'Classic Blue', accent: '#2563eb', text: '#1f2937', bg: '#ffffff', secondary: '#f3f4f6' },
+    { nameTr: 'Lacivert & Altın', nameEn: 'Navy & Gold', accent: '#1e3a8a', text: '#111827', bg: '#ffffff', secondary: '#fef3c7' },
+    { nameTr: 'Zümrüt Yeşili', nameEn: 'Emerald', accent: '#059669', text: '#1f2937', bg: '#ffffff', secondary: '#ecfdf5' },
+    { nameTr: 'Bordo & Krem', nameEn: 'Burgundy', accent: '#9f1239', text: '#292524', bg: '#fffbeb', secondary: '#fef2f2' },
+    { nameTr: 'Gece Modu', nameEn: 'Dark Mode', accent: '#38bdf8', text: '#f1f5f9', bg: '#0f172a', secondary: '#1e293b' },
+    { nameTr: 'Siyah & Beyaz', nameEn: 'Monochrome', accent: '#111827', text: '#111827', bg: '#ffffff', secondary: '#f3f4f6' }
 ];
 
 const STATIC_TEXT_IDS = ['fullname', 'jobtitle', 'phone', 'email', 'address', 'linkedin', 'github', 'website', 'summary'];
@@ -46,10 +166,10 @@ const LIST_CONFIG = {
         sectionId: 'sec-experience',
         template: () => ({ id: Date.now() + Math.random(), title: '', company: '', date: '', desc: '' }),
         fields: [
-            { key: 'title', placeholder: 'Pozisyon', type: 'text' },
-            { key: 'company', placeholder: 'Şirket Adı', type: 'text' },
-            { key: 'date', placeholder: 'Tarih Aralığı (Örn: 2020 - 2024)', type: 'text' },
-            { key: 'desc', placeholder: 'Açıklama', type: 'textarea' }
+            { key: 'title', placeholder: { tr: 'Pozisyon', en: 'Job Title' }, type: 'text' },
+            { key: 'company', placeholder: { tr: 'Şirket Adı', en: 'Company Name' }, type: 'text' },
+            { key: 'date', placeholder: { tr: 'Tarih Aralığı (Örn: 2020 - 2024)', en: 'Date Range (e.g. 2020 - 2024)' }, type: 'text' },
+            { key: 'desc', placeholder: { tr: 'Açıklama', en: 'Description' }, type: 'textarea' }
         ],
         renderPreview: (item) => `
             <div class="cv-item">
@@ -64,9 +184,9 @@ const LIST_CONFIG = {
         sectionId: 'sec-education',
         template: () => ({ id: Date.now() + Math.random(), school: '', degree: '', date: '' }),
         fields: [
-            { key: 'school', placeholder: 'Okul / Üniversite', type: 'text' },
-            { key: 'degree', placeholder: 'Bölüm / Derece', type: 'text' },
-            { key: 'date', placeholder: 'Mezuniyet Yılı', type: 'text' }
+            { key: 'school', placeholder: { tr: 'Okul / Üniversite', en: 'School / University' }, type: 'text' },
+            { key: 'degree', placeholder: { tr: 'Bölüm / Derece', en: 'Degree / Major' }, type: 'text' },
+            { key: 'date', placeholder: { tr: 'Mezuniyet Yılı', en: 'Graduation Year' }, type: 'text' }
         ],
         renderPreview: (item) => `
             <div class="cv-item">
@@ -80,10 +200,10 @@ const LIST_CONFIG = {
         sectionId: 'sec-projects',
         template: () => ({ id: Date.now() + Math.random(), name: '', role: '', link: '', desc: '' }),
         fields: [
-            { key: 'name', placeholder: 'Proje Adı', type: 'text' },
-            { key: 'role', placeholder: 'Teknolojiler / Rol (Örn: React, Node.js)', type: 'text' },
-            { key: 'link', placeholder: 'Proje Linki (Opsiyonel)', type: 'text' },
-            { key: 'desc', placeholder: 'Kısa Açıklama', type: 'textarea' }
+            { key: 'name', placeholder: { tr: 'Proje Adı', en: 'Project Name' }, type: 'text' },
+            { key: 'role', placeholder: { tr: 'Teknolojiler / Rol (Örn: React, Node.js)', en: 'Technologies / Role (e.g. React, Node.js)' }, type: 'text' },
+            { key: 'link', placeholder: { tr: 'Proje Linki (Opsiyonel)', en: 'Project Link (Optional)' }, type: 'text' },
+            { key: 'desc', placeholder: { tr: 'Kısa Açıklama', en: 'Short Description' }, type: 'textarea' }
         ],
         renderPreview: (item) => `
             <div class="cv-item">
@@ -99,7 +219,7 @@ const LIST_CONFIG = {
         sectionId: 'sec-skills',
         compact: true,
         template: () => ({ id: Date.now() + Math.random(), name: '' }),
-        fields: [{ key: 'name', placeholder: 'Yetenek (Örn: JavaScript)', type: 'text' }],
+        fields: [{ key: 'name', placeholder: { tr: 'Yetenek (Örn: JavaScript)', en: 'Skill (e.g. JavaScript)' }, type: 'text' }],
         renderPreview: (item) => `<li>${escapeHtml(item.name)}</li>`
     },
     languages: {
@@ -108,8 +228,8 @@ const LIST_CONFIG = {
         sectionId: 'sec-languages',
         template: () => ({ id: Date.now() + Math.random(), name: '', level: '' }),
         fields: [
-            { key: 'name', placeholder: 'Dil (Örn: İngilizce)', type: 'text' },
-            { key: 'level', placeholder: 'Seviye (Örn: C1 / İleri)', type: 'text' }
+            { key: 'name', placeholder: { tr: 'Dil (Örn: İngilizce)', en: 'Language (e.g. English)' }, type: 'text' },
+            { key: 'level', placeholder: { tr: 'Seviye (Örn: C1 / İleri)', en: 'Level (e.g. C1 / Fluent)' }, type: 'text' }
         ],
         renderPreview: (item) => `<li><span>${escapeHtml(item.name)}</span><span>${escapeHtml(item.level)}</span></li>`
     },
@@ -119,9 +239,9 @@ const LIST_CONFIG = {
         sectionId: 'sec-certificates',
         template: () => ({ id: Date.now() + Math.random(), name: '', issuer: '', date: '' }),
         fields: [
-            { key: 'name', placeholder: 'Sertifika Adı', type: 'text' },
-            { key: 'issuer', placeholder: 'Veren Kurum', type: 'text' },
-            { key: 'date', placeholder: 'Yıl', type: 'text' }
+            { key: 'name', placeholder: { tr: 'Sertifika Adı', en: 'Certificate Name' }, type: 'text' },
+            { key: 'issuer', placeholder: { tr: 'Veren Kurum', en: 'Issuing Organization' }, type: 'text' },
+            { key: 'date', placeholder: { tr: 'Yıl', en: 'Year' }, type: 'text' }
         ],
         renderPreview: (item) => `
             <div class="cv-item">
@@ -135,9 +255,9 @@ const LIST_CONFIG = {
         sectionId: 'sec-references',
         template: () => ({ id: Date.now() + Math.random(), name: '', title: '', contact: '' }),
         fields: [
-            { key: 'name', placeholder: 'Ad Soyad', type: 'text' },
-            { key: 'title', placeholder: 'Ünvan / Şirket', type: 'text' },
-            { key: 'contact', placeholder: 'İletişim (E-posta / Telefon)', type: 'text' }
+            { key: 'name', placeholder: { tr: 'Ad Soyad', en: 'Full Name' }, type: 'text' },
+            { key: 'title', placeholder: { tr: 'Ünvan / Şirket', en: 'Title / Company' }, type: 'text' },
+            { key: 'contact', placeholder: { tr: 'İletişim (E-posta / Telefon)', en: 'Contact (Email / Phone)' }, type: 'text' }
         ],
         renderPreview: (item) => `
             <div class="cv-item">
@@ -256,6 +376,8 @@ function escapeHtml(str) {
 
 function renderPalettePresets() {
     const container = document.getElementById('palette-presets');
+    const prof = activeProfile();
+    const isEn = prof && prof.lang === 'en';
     container.innerHTML = PALETTE_PRESETS.map((p, idx) => `
         <button type="button" class="palette-btn" data-palette-idx="${idx}">
             <div class="palette-dots">
@@ -264,15 +386,15 @@ function renderPalettePresets() {
                 <span class="palette-dot" style="background:${p.bg}"></span>
                 <span class="palette-dot" style="background:${p.secondary}"></span>
             </div>
-            <span>${p.name}</span>
+            <span>${isEn ? p.nameEn : p.nameTr}</span>
         </button>
     `).join('');
 
     container.querySelectorAll('.palette-btn').forEach((btn) => {
         btn.addEventListener('click', () => {
             const preset = PALETTE_PRESETS[Number(btn.dataset.paletteIdx)];
-            const prof = activeProfile();
-            prof.design.colors = {
+            const current = activeProfile();
+            current.design.colors = {
                 accent: preset.accent,
                 text: preset.text,
                 bg: preset.bg,
@@ -424,12 +546,12 @@ function syncProfileUI() {
     document.getElementById('show-qr').checked = Boolean(prof.staticData.showQr);
     document.getElementById('qr-source').value = prof.staticData.qrSource || 'auto';
 
+    applyLanguage();
     renderAllLists();
     renderStaticPreview();
     renderPhoto();
     renderQR();
     applySectionOrderAndVisibility();
-    applyLanguage();
     applyDesign();
     fitPreviewToScreen();
 }
@@ -514,13 +636,14 @@ function renderQR() {
         return;
     }
 
+    const dict = I18N[activeProfile().lang || 'tr'] || I18N.tr;
     let raw = '';
     let label = '';
     const src = s.qrSource || 'auto';
 
     if (src === 'website' && s.website) {
         raw = normalizeUrl(s.website);
-        label = 'Portfolyo';
+        label = dict.qrPortfolioLabel;
     } else if (src === 'linkedin' && s.linkedin) {
         raw = normalizeUrl(s.linkedin);
         label = 'LinkedIn';
@@ -529,12 +652,12 @@ function renderQR() {
         label = 'GitHub';
     } else if (src === 'email' && s.email) {
         raw = 'mailto:' + s.email.trim();
-        label = 'E-posta';
+        label = dict.qrEmail;
     } else if (src === 'auto') {
-        if (s.website) { raw = normalizeUrl(s.website); label = 'Web'; }
+        if (s.website) { raw = normalizeUrl(s.website); label = dict.qrWebLabel; }
         else if (s.linkedin) { raw = normalizeUrl(s.linkedin); label = 'LinkedIn'; }
         else if (s.github) { raw = normalizeUrl(s.github); label = 'GitHub'; }
-        else if (s.email) { raw = 'mailto:' + s.email.trim(); label = 'E-posta'; }
+        else if (s.email) { raw = 'mailto:' + s.email.trim(); label = dict.qrEmail; }
     }
 
     if (!raw) {
@@ -556,18 +679,154 @@ function renderQR() {
 function toggleLanguage() {
     const prof = activeProfile();
     prof.lang = prof.lang === 'tr' ? 'en' : 'tr';
+
+    // If built-in demo data is active, keep its sample texts in sync with chosen language
+    if (prof.staticData.fullname === 'Ahmet Yılmaz' && prof.staticData.email === 'ahmet.yilmaz@example.com') {
+        applyDemoDataToProfile(prof);
+        STATIC_TEXT_IDS.forEach((id) => {
+            const el = document.getElementById(id);
+            if (el) el.value = prof.staticData[id] || '';
+        });
+    }
+
     applyLanguage();
+    renderAllLists();
     renderStaticPreview();
+    renderQR();
     saveToStorage();
+}
+
+function setTextWithIcon(selector, iconName, text) {
+    const el = document.querySelector(selector);
+    if (el) el.innerHTML = `<span class="material-icons-round">${iconName}</span> ${escapeHtml(text)}`;
+}
+
+function setFieldMeta(inputId, labelText, placeholderText) {
+    const input = document.getElementById(inputId);
+    if (!input) return;
+    if (labelText && input.previousElementSibling && input.previousElementSibling.tagName === 'LABEL') {
+        input.previousElementSibling.textContent = labelText;
+    }
+    if (placeholderText !== undefined) {
+        input.placeholder = placeholderText;
+    }
 }
 
 function applyLanguage() {
     const lang = activeProfile().lang || 'tr';
     const dict = I18N[lang] || I18N.tr;
+    document.documentElement.lang = lang;
 
+    // Header & Tabs
+    setTextWithIcon('.header-content h1', 'description', dict.appTitle);
+    const editorTab = document.querySelector('.tab-btn[data-tab="editor"]');
+    const previewTab = document.querySelector('.tab-btn[data-tab="preview"]');
+    if (editorTab) editorTab.textContent = dict.tabEditor;
+    if (previewTab) previewTab.textContent = dict.tabPreview;
     document.getElementById('lang-toggle-btn').textContent = lang.toUpperCase();
-    document.getElementById('preview-lang-label').textContent = `Dil: ${lang.toUpperCase()}`;
+    document.getElementById('preview-lang-label').textContent = dict.langLabel;
 
+    // Design Modal
+    const modalTitle = document.querySelector('#design-modal .modal-header h2');
+    if (modalTitle) modalTitle.textContent = dict.designSettings;
+    const modalHeadings = document.querySelectorAll('#design-modal .modal-body > h3');
+    if (modalHeadings[0]) modalHeadings[0].textContent = dict.templateSelect;
+    if (modalHeadings[1]) modalHeadings[1].textContent = dict.palettePresets;
+    if (modalHeadings[2]) modalHeadings[2].textContent = dict.customColors;
+    if (modalHeadings[3]) modalHeadings[3].textContent = dict.typography;
+
+    renderPalettePresets();
+
+    const colorLabels = document.querySelectorAll('#design-modal .color-control label');
+    const colorKeys = ['colorAccent', 'colorText', 'colorBg', 'colorSecondary'];
+    colorKeys.forEach((k, i) => {
+        if (colorLabels[i]) colorLabels[i].textContent = dict[k];
+    });
+
+    const fontLabel = document.querySelector('.typography-settings .input-group label');
+    if (fontLabel) fontLabel.textContent = dict.fontFamily;
+    const templateFontOpt = document.querySelector('#font-family-select option[value="template"]');
+    if (templateFontOpt) templateFontOpt.textContent = dict.fontTemplate;
+
+    const rangeLabels = document.querySelectorAll('.typography-settings .range-control label');
+    const rangeKeys = ['fontSizeLabel', 'lineHeightLabel', 'pagePaddingLabel'];
+    rangeKeys.forEach((k, i) => {
+        if (rangeLabels[i] && rangeLabels[i].childNodes[0]) {
+            rangeLabels[i].childNodes[0].textContent = dict[k] + ' ';
+        }
+    });
+    setTextWithIcon('#reset-design-btn', 'restart_alt', dict.resetDesign);
+
+    // Editor Profile Toolbar & Utilities
+    const profileLabel = document.querySelector('label[for="profile-select"]');
+    if (profileLabel) profileLabel.textContent = dict.activeProfile;
+    setTextWithIcon('#fill-demo-btn', 'auto_fix_high', dict.fillDemo);
+    setTextWithIcon('#export-json-btn', 'download', dict.exportJson);
+    setTextWithIcon('#import-json-btn', 'upload', dict.importJson);
+    setTextWithIcon('#clear-data-btn', 'delete_sweep', dict.clearBtn);
+
+    // Personal Info Card & Photo/QR
+    const personalCardTitle = document.querySelector('#editor .card:nth-of-type(2) .card-title');
+    if (personalCardTitle) personalCardTitle.textContent = dict.personalInfo;
+    setTextWithIcon('#upload-photo-btn', 'add_a_photo', dict.uploadPhoto);
+    setTextWithIcon('#remove-photo-btn', 'hide_image', dict.removePhoto);
+    const shapeLabel = document.querySelector('label[for="photo-shape"]');
+    if (shapeLabel) shapeLabel.textContent = dict.photoShape;
+    const shapeCircleOpt = document.querySelector('#photo-shape option[value="circle"]');
+    const shapeRoundedOpt = document.querySelector('#photo-shape option[value="rounded"]');
+    if (shapeCircleOpt) shapeCircleOpt.textContent = dict.shapeCircle;
+    if (shapeRoundedOpt) shapeRoundedOpt.textContent = dict.shapeRounded;
+
+    setFieldMeta('fullname', dict.lblFullname, dict.phFullname);
+    setFieldMeta('jobtitle', dict.lblJobtitle, dict.phJobtitle);
+    setFieldMeta('phone', dict.lblPhone, dict.phPhone);
+    setFieldMeta('email', dict.lblEmail, dict.phEmail);
+    setFieldMeta('address', dict.lblAddress, dict.phAddress);
+    setFieldMeta('linkedin', dict.lblLinkedin);
+    setFieldMeta('github', dict.lblGithub);
+    setFieldMeta('website', dict.lblWebsite, dict.phWebsite);
+
+    const showQrText = document.querySelector('#show-qr + span');
+    if (showQrText) showQrText.textContent = dict.showQr;
+    const qrOpts = {
+        auto: dict.qrAuto,
+        website: dict.qrWebsite,
+        linkedin: dict.qrLinkedin,
+        github: dict.qrGithub,
+        email: dict.qrEmail
+    };
+    Object.keys(qrOpts).forEach((val) => {
+        const opt = document.querySelector(`#qr-source option[value="${val}"]`);
+        if (opt) opt.textContent = qrOpts[val];
+    });
+
+    // Editor Section Cards & Buttons
+    const summaryTitle = document.querySelector('.card[data-section="summary"] .card-title');
+    if (summaryTitle) summaryTitle.textContent = dict.summaryCard;
+    const summaryInput = document.getElementById('summary');
+    if (summaryInput) summaryInput.placeholder = dict.phSummary;
+
+    ['experience', 'education', 'projects', 'skills', 'languages', 'certificates', 'references'].forEach((secKey) => {
+        const card = document.querySelector(`.card[data-section="${secKey}"]`);
+        if (!card) return;
+        const h2 = card.querySelector('.card-title');
+        if (h2 && h2.childNodes[0]) h2.childNodes[0].textContent = dict[secKey] + ' ';
+        const addBtn = card.querySelector('.add-btn');
+        if (addBtn) addBtn.textContent = dict.addBtn;
+    });
+
+    const goPreviewBtn = document.querySelector('.action-bar-bottom button');
+    if (goPreviewBtn) goPreviewBtn.textContent = dict.goToPreview;
+
+    // Preview Toolbar & Footer
+    setTextWithIcon('button[onclick="downloadWord()"]', 'description', dict.downloadWord);
+    setTextWithIcon('button[onclick="printCV()"]', 'picture_as_pdf', dict.downloadPdf);
+    const previewHint = document.querySelector('.preview-hint');
+    if (previewHint) previewHint.textContent = dict.previewHint;
+    const footer = document.querySelector('.app-footer');
+    if (footer) footer.innerHTML = dict.privacyFooter;
+
+    // CV Paper Section Headings
     document.querySelectorAll('[data-i18n]').forEach((el) => {
         const key = el.dataset.i18n;
         if (dict[key]) el.textContent = dict[key];
@@ -776,13 +1035,17 @@ window.updateListItem = function (listKey, id, field, value) {
 
 function renderListEditor(listKey) {
     const cfg = LIST_CONFIG[listKey];
-    const items = activeProfile().lists[listKey] || [];
+    const prof = activeProfile();
+    const lang = prof.lang || 'tr';
+    const items = prof.lists[listKey] || [];
     const container = document.getElementById(cfg.editorId);
+
+    const getPh = (f) => (typeof f.placeholder === 'object' ? (f.placeholder[lang] || f.placeholder.tr) : f.placeholder);
 
     if (cfg.compact) {
         container.innerHTML = items.map((item) => `
             <div class="dynamic-item" style="margin-bottom: 0.5rem; border:none; padding:0; display:flex; gap:0.5rem; align-items:center;">
-                <input type="text" placeholder="${cfg.fields[0].placeholder}" value="${escapeHtml(item.name)}"
+                <input type="text" placeholder="${escapeHtml(getPh(cfg.fields[0]))}" value="${escapeHtml(item.name)}"
                     oninput="updateListItem('${listKey}', ${item.id}, 'name', this.value)">
                 <button type="button" class="remove-btn" style="position:static;" onclick="removeListItem('${listKey}', ${item.id})">
                     <span class="material-icons-round">close</span>
@@ -795,10 +1058,11 @@ function renderListEditor(listKey) {
     container.innerHTML = items.map((item) => {
         const fieldsHtml = cfg.fields.map((f) => {
             const val = escapeHtml(item[f.key] || '');
+            const ph = escapeHtml(getPh(f));
             if (f.type === 'textarea') {
-                return `<div class="input-group"><textarea placeholder="${f.placeholder}" rows="2" oninput="updateListItem('${listKey}', ${item.id}, '${f.key}', this.value)">${val}</textarea></div>`;
+                return `<div class="input-group"><textarea placeholder="${ph}" rows="2" oninput="updateListItem('${listKey}', ${item.id}, '${f.key}', this.value)">${val}</textarea></div>`;
             }
-            return `<div class="input-group"><input type="text" placeholder="${f.placeholder}" value="${val}" oninput="updateListItem('${listKey}', ${item.id}, '${f.key}', this.value)"></div>`;
+            return `<div class="input-group"><input type="text" placeholder="${ph}" value="${val}" oninput="updateListItem('${listKey}', ${item.id}, '${f.key}', this.value)"></div>`;
         }).join('');
 
         return `
@@ -895,11 +1159,7 @@ function deleteProfile() {
 }
 
 // Demo Data, Clear, JSON Export / Import
-function fillDemoData() {
-    const prof = activeProfile();
-    const hasContent = Boolean(prof.staticData.fullname || prof.lists.experiences.length);
-    if (hasContent && !confirm('Mevcut taslağın üzerine örnek veriler yazılsın mı?')) return;
-
+function applyDemoDataToProfile(prof) {
     const isEn = prof.lang === 'en';
     prof.staticData = {
         ...prof.staticData,
@@ -976,7 +1236,17 @@ function fillDemoData() {
             { id: Date.now() + 13, name: 'Mehmet Demir', title: 'CTO, Teknoloji A.Ş.', contact: 'mehmet@teknoloji.example' }
         ]
     };
+}
 
+function fillDemoData() {
+    const prof = activeProfile();
+    const hasContent = Boolean(prof.staticData.fullname || prof.lists.experiences.length);
+    const confirmMsg = prof.lang === 'en'
+        ? 'Overwrite current draft with sample data?'
+        : 'Mevcut taslağın üzerine örnek veriler yazılsın mı?';
+    if (hasContent && !confirm(confirmMsg)) return;
+
+    applyDemoDataToProfile(prof);
     saveToStorage();
     syncProfileUI();
 }
