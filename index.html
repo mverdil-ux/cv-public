@@ -32,6 +32,7 @@
             <h1><span class="material-icons-round">description</span> CV Hazırlayıcı</h1>
             <div class="header-actions">
                 <button id="lang-toggle-btn" class="pill-btn" title="CV Başlık Dilini Değiştir (TR/EN)">TR</button>
+                <button id="help-btn" class="icon-btn" title="Nasıl Kullanılır?"><span class="material-icons-round">help_outline</span></button>
                 <button id="design-btn" class="icon-btn" title="Tasarım Ayarları"><span class="material-icons-round">palette</span></button>
             </div>
         </div>
@@ -205,10 +206,69 @@
         </div>
     </div>
 
+    <!-- VISUAL ONBOARDING / GUIDE MODAL -->
+    <div id="guide-modal" class="modal hidden">
+        <div class="modal-content guide-modal-content">
+            <div class="modal-header">
+                <h2 id="guide-modal-title">Nasıl Kullanılır? (3 Adım)</h2>
+                <button id="close-guide-btn" class="close-btn"><span class="material-icons-round">close</span></button>
+            </div>
+            <div class="modal-body guide-body">
+                <div class="guide-step-pills">
+                    <button type="button" class="guide-pill active" data-step="0">1. Doldur</button>
+                    <button type="button" class="guide-pill" data-step="1">2. Tasarla</button>
+                    <button type="button" class="guide-pill" data-step="2">3. İndir</button>
+                </div>
+
+                <div class="guide-visual-wrap">
+                    <img id="guide-step-img" src="./guide-step1.svg" alt="Kullanım Adımı Görseli">
+                </div>
+
+                <h3 id="guide-step-title" class="guide-step-title">1. Bilgilerini Gir veya Örnek Doldur</h3>
+                <p id="guide-step-desc" class="guide-step-desc">Kişisel bilgilerini ve deneyimlerini yaz. İstersen hemen görmek için "Örnek Doldur" butonuna basabilirsin.</p>
+
+                <div class="guide-actions">
+                    <button type="button" id="guide-prev-btn" class="secondary-btn">← Geri</button>
+                    <button type="button" id="guide-demo-btn" class="chip-btn guide-demo-chip">
+                        <span class="material-icons-round">auto_fix_high</span> Örnek CV ile Dene
+                    </button>
+                    <button type="button" id="guide-next-btn" class="primary-btn">İleri →</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <main class="app-container">
         <!-- EDITOR SECTION -->
         <section id="editor" class="tab-content active">
             <div class="form-container">
+
+                <!-- 3 Adımda Görsel Hızlı Başlangıç Şeridi -->
+                <div id="quickstart-strip" class="card quickstart-card">
+                    <div class="quickstart-header">
+                        <span id="quickstart-title" class="quickstart-title">👋 3 Adımda CV'ni Hazırla</span>
+                        <button type="button" id="dismiss-quickstart-btn" class="close-btn" title="Gizle">
+                            <span class="material-icons-round">close</span>
+                        </button>
+                    </div>
+                    <div class="quickstart-steps">
+                        <button type="button" class="qs-step" id="qs-step-1">
+                            <img src="./guide-step1.svg" alt="Adım 1">
+                            <strong id="qs-t1">1. Bilgilerini Gir</strong>
+                            <span id="qs-d1">veya Örnek Doldur</span>
+                        </button>
+                        <button type="button" class="qs-step" id="qs-step-2">
+                            <img src="./guide-step2.svg" alt="Adım 2">
+                            <strong id="qs-t2">2. Tasarımı Seç</strong>
+                            <span id="qs-d2">20 Şablon &amp; Renk</span>
+                        </button>
+                        <button type="button" class="qs-step" id="qs-step-3">
+                            <img src="./guide-step3.svg" alt="Adım 3">
+                            <strong id="qs-t3">3. Önizle &amp; İndir</strong>
+                            <span id="qs-d3">PDF veya Word</span>
+                        </button>
+                    </div>
+                </div>
 
                 <!-- Taslaklar & Veri Yönetimi -->
                 <div class="card toolbar-card">
@@ -252,7 +312,7 @@
 
                 <!-- Kişisel Bilgiler -->
                 <div class="card">
-                    <h2 class="card-title">Kişisel Bilgiler & Bağlantılar</h2>
+                    <h2 id="personal-info-title" class="card-title">Kişisel Bilgiler & Bağlantılar</h2>
 
                     <!-- Fotoğraf Yükleme -->
                     <div class="photo-upload-row">

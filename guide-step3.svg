@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 220">
+  <defs>
+    <linearGradient id="bg3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ecfdf5"/>
+      <stop offset="100%" stop-color="#d1fae5"/>
+    </linearGradient>
+    <filter id="sh3" x="-10%" y="-10%" width="120%" height="125%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#065f46" flood-opacity="0.14"/>
+    </filter>
+  </defs>
+  <rect width="400" height="220" rx="16" fill="url(#bg3)"/>
+
+  <!-- Action Toolbar Top -->
+  <rect x="64" y="16" width="122" height="28" rx="8" fill="#ffffff" stroke="#cbd5e1" filter="url(#sh3)"/>
+  <rect x="76" y="24" width="12" height="12" rx="2" fill="#2563eb"/>
+  <rect x="94" y="27" width="76" height="6" rx="3" fill="#334155"/>
+
+  <rect x="200" y="16" width="136" height="28" rx="8" fill="#2563eb" filter="url(#sh3)"/>
+  <rect x="212" y="24" width="12" height="12" rx="2" fill="#ef4444" stroke="#ffffff" stroke-width="1"/>
+  <rect x="230" y="27" width="90" height="6" rx="3" fill="#ffffff"/>
+
+  <!-- A4 CV Paper Mockup -->
+  <rect x="116" y="56" width="168" height="150" rx="6" fill="#ffffff" filter="url(#sh3)"/>
+  <!-- CV Header inside A4 -->
+  <circle cx="140" cy="80" r="13" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <circle cx="140" cy="77" r="4" fill="#2563eb"/>
+  <path d="M132 88 Q140 81 148 88" fill="#2563eb"/>
+  <rect x="160" y="71" width="74" height="8" rx="3" fill="#1e293b"/>
+  <rect x="160" y="83" width="52" height="5" rx="2" fill="#2563eb"/>
+  <!-- Mini QR inside A4 -->
+  <rect x="246" y="67" width="24" height="24" rx="2" fill="#f8fafc" stroke="#cbd5e1"/>
+  <rect x="250" y="71" width="6" height="6" fill="#111827"/>
+  <rect x="260" y="71" width="6" height="6" fill="#111827"/>
+  <rect x="250" y="81" width="6" height="6" fill="#111827"/>
+  <rect x="260" y="81" width="6" height="6" fill="#2563eb"/>
+
+  <line x1="128" y1="100" x2="272" y2="100" stroke="#e2e8f0" stroke-width="1.5"/>
+
+  <!-- Two Columns inside A4 -->
+  <rect x="128" y="110" width="84" height="6" rx="2" fill="#2563eb"/>
+  <rect x="128" y="121" width="84" height="4" rx="2" fill="#94a3b8"/>
+  <rect x="128" y="129" width="70" height="4" rx="2" fill="#cbd5e1"/>
+  <rect x="128" y="142" width="84" height="6" rx="2" fill="#2563eb"/>
+  <rect x="128" y="153" width="80" height="4" rx="2" fill="#94a3b8"/>
+  <rect x="128" y="161" width="68" height="4" rx="2" fill="#cbd5e1"/>
+  <rect x="128" y="174" width="84" height="6" rx="2" fill="#2563eb"/>
+  <rect x="128" y="185" width="72" height="4" rx="2" fill="#94a3b8"/>
+
+  <!-- Side Column -->
+  <rect x="220" y="110" width="52" height="82" rx="4" fill="#f1f5f9"/>
+  <rect x="226" y="117" width="34" height="5" rx="2" fill="#2563eb"/>
+  <rect x="226" y="128" width="40" height="10" rx="3" fill="#dbeafe"/>
+  <rect x="226" y="143" width="36" height="10" rx="3" fill="#dbeafe"/>
+  <rect x="226" y="158" width="40" height="10" rx="3" fill="#dbeafe"/>
+
+  <!-- Download Arrow + PDF Badge -->
+  <circle cx="340" cy="144" r="24" fill="#ffffff" filter="url(#sh3)"/>
+  <path d="M340 132 V150 M333 144 L340 152 L347 144" stroke="#059669" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="322" y="172" width="36" height="16" rx="4" fill="#ef4444"/>
+  <text x="340" y="183" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" font-size="9" fill="#ffffff">PDF</text>
+
+  <!-- Step 3 Badge -->
+  <circle cx="42" cy="30" r="16" fill="#059669"/>
+  <text x="42" y="36" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" font-size="15" fill="#ffffff">3</text>
+</svg>

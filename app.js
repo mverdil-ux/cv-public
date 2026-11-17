@@ -1,5 +1,43 @@
 // Storage & Constants
 const STORAGE_KEY = 'cv_builder_profiles_v2';
+const ONBOARDED_KEY = 'cv_builder_onboarded_v1';
+const HIDE_QS_KEY = 'cv_builder_hide_quickstart';
+
+const GUIDE_STEPS = [
+    {
+        img: './guide-step1.svg',
+        title: {
+            tr: '1. Bilgilerini Gir veya Örnek Doldur',
+            en: '1. Enter Your Info or Try Sample Data'
+        },
+        desc: {
+            tr: 'Kişisel bilgilerini, fotoğrafını ve deneyimlerini yaz. Uygulamayı hemen denemek için "Örnek Doldur" butonuna basabilirsin.',
+            en: 'Fill in your personal details, photo, and experience. You can also click "Fill Sample" to preview everything right away.'
+        }
+    },
+    {
+        img: './guide-step2.svg',
+        title: {
+            tr: '2. 20 Şablon & Renklerle Tasarla',
+            en: '2. Customize with 20 Templates & Colors'
+        },
+        desc: {
+            tr: 'Sağ üstteki Palet simgesine basarak 20 modern şablondan birini seç; renkleri, yazı tipini ve sayfa sığdırmayı ayarla.',
+            en: 'Tap the Palette icon in the top-right corner to pick from 20 modern templates, color presets, fonts, and page margins.'
+        }
+    },
+    {
+        img: './guide-step3.svg',
+        title: {
+            tr: '3. Canlı Önizle & PDF / Word İndir',
+            en: '3. Live Preview & Download PDF / Word'
+        },
+        desc: {
+            tr: 'Üstten "Önizle" sekmesine geçip CV\'ni gör; tek dokunuşla A4 PDF veya Word çıktısı al. Verilerin yalnızca kendi cihazında saklanır.',
+            en: 'Switch to the "Preview" tab to review your CV and export it as an A4 PDF or Word file. Your data stays private on your device.'
+        }
+    }
+];
 
 const I18N = {
     tr: {
@@ -72,7 +110,20 @@ const I18N = {
         certificates: 'Sertifikalar',
         references: 'Referanslar',
         defaultName: 'Ad Soyad',
-        defaultTitle: 'Ünvan'
+        defaultTitle: 'Ünvan',
+        guideModalTitle: 'Nasıl Kullanılır? (3 Adım)',
+        guidePills: ['1. Doldur', '2. Tasarla', '3. İndir'],
+        guidePrev: '← Geri',
+        guideNext: 'İleri →',
+        guideFinish: 'Hemen Başla ✓',
+        guideDemo: 'Örnek CV ile Dene',
+        qsTitle: '👋 3 Adımda CV\'ni Hazırla',
+        qsT1: '1. Bilgilerini Gir',
+        qsD1: 'veya Örnek Doldur',
+        qsT2: '2. Tasarımı Seç',
+        qsD2: '20 Şablon & Renk',
+        qsT3: '3. Önizle & İndir',
+        qsD3: 'PDF veya Word'
     },
     en: {
         appTitle: 'CV Builder',
@@ -144,7 +195,20 @@ const I18N = {
         certificates: 'Certificates',
         references: 'References',
         defaultName: 'Full Name',
-        defaultTitle: 'Job Title'
+        defaultTitle: 'Job Title',
+        guideModalTitle: 'How to Use? (3 Steps)',
+        guidePills: ['1. Fill Info', '2. Design', '3. Export'],
+        guidePrev: '← Back',
+        guideNext: 'Next →',
+        guideFinish: 'Get Started ✓',
+        guideDemo: 'Try Sample CV',
+        qsTitle: '👋 Create Your CV in 3 Steps',
+        qsT1: '1. Enter Your Info',
+        qsD1: 'or Fill Sample',
+        qsT2: '2. Pick a Design',
+        qsD2: '20 Templates & Colors',
+        qsT3: '3. Preview & Export',
+        qsD3: 'PDF or Word'
     }
 };
 
@@ -356,6 +420,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderPalettePresets();
     setupEventListeners();
     syncProfileUI();
+    initOnboarding();
     registerServiceWorker();
 });
 
@@ -423,6 +488,48 @@ function setupEventListeners() {
     designModal.addEventListener('click', (e) => {
         if (e.target === designModal) designModal.classList.add('hidden');
     });
+
+    // Visual Guide Modal & Quickstart Strip
+    const guideModal = document.getElementById('guide-modal');
+    document.getElementById('help-btn').addEventListener('click', () => openGuideModal(0));
+    document.getElementById('close-guide-btn').addEventListener('click', closeGuideModal);
+    guideModal.addEventListener('click', (e) => {
+        if (e.target === guideModal) closeGuideModal();
+    });
+    document.querySelectorAll('.guide-pill').forEach((pill) => {
+        pill.addEventListener('click', () => {
+            guideStepIndex = Number(pill.dataset.step) || 0;
+            renderGuideStep();
+        });
+    });
+    document.getElementById('guide-prev-btn').addEventListener('click', () => {
+        if (guideStepIndex > 0) {
+            guideStepIndex--;
+            renderGuideStep();
+        }
+    });
+    document.getElementById('guide-next-btn').addEventListener('click', () => {
+        if (guideStepIndex < GUIDE_STEPS.length - 1) {
+            guideStepIndex++;
+            renderGuideStep();
+        } else {
+            closeGuideModal();
+        }
+    });
+    document.getElementById('guide-demo-btn').addEventListener('click', () => {
+        applyDemoDataToProfile(activeProfile());
+        saveToStorage();
+        syncProfileUI();
+        closeGuideModal();
+    });
+
+    document.getElementById('dismiss-quickstart-btn').addEventListener('click', () => {
+        document.getElementById('quickstart-strip').classList.add('hidden');
+        try { localStorage.setItem(HIDE_QS_KEY, '1'); } catch {}
+    });
+    document.getElementById('qs-step-1').addEventListener('click', () => openGuideModal(0));
+    document.getElementById('qs-step-2').addEventListener('click', () => designModal.classList.remove('hidden'));
+    document.getElementById('qs-step-3').addEventListener('click', () => window.switchTab('preview'));
 
     // Template Selection
     templateItems.forEach((item) => {
@@ -766,7 +873,7 @@ function applyLanguage() {
     setTextWithIcon('#clear-data-btn', 'delete_sweep', dict.clearBtn);
 
     // Personal Info Card & Photo/QR
-    const personalCardTitle = document.querySelector('#editor .card:nth-of-type(2) .card-title');
+    const personalCardTitle = document.getElementById('personal-info-title');
     if (personalCardTitle) personalCardTitle.textContent = dict.personalInfo;
     setTextWithIcon('#upload-photo-btn', 'add_a_photo', dict.uploadPhoto);
     setTextWithIcon('#remove-photo-btn', 'hide_image', dict.removePhoto);
@@ -831,6 +938,86 @@ function applyLanguage() {
         const key = el.dataset.i18n;
         if (dict[key]) el.textContent = dict[key];
     });
+
+    // Visual Guide & Quickstart Strip Localization
+    const guideTitle = document.getElementById('guide-modal-title');
+    if (guideTitle) guideTitle.textContent = dict.guideModalTitle;
+    document.querySelectorAll('.guide-pill').forEach((pill, i) => {
+        if (dict.guidePills && dict.guidePills[i]) pill.textContent = dict.guidePills[i];
+    });
+    const prevBtn = document.getElementById('guide-prev-btn');
+    if (prevBtn) prevBtn.textContent = dict.guidePrev;
+    setTextWithIcon('#guide-demo-btn', 'auto_fix_high', dict.guideDemo);
+
+    const qsMap = {
+        'quickstart-title': dict.qsTitle,
+        'qs-t1': dict.qsT1,
+        'qs-d1': dict.qsD1,
+        'qs-t2': dict.qsT2,
+        'qs-d2': dict.qsD2,
+        'qs-t3': dict.qsT3,
+        'qs-d3': dict.qsD3
+    };
+    Object.keys(qsMap).forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = qsMap[id];
+    });
+    renderGuideStep();
+}
+
+// Visual Guide / Onboarding Logic
+let guideStepIndex = 0;
+
+function initOnboarding() {
+    const qsStrip = document.getElementById('quickstart-strip');
+    try {
+        if (localStorage.getItem(HIDE_QS_KEY) === '1' && qsStrip) {
+            qsStrip.classList.add('hidden');
+        }
+        const prof = activeProfile();
+        const isEmpty = !prof.staticData.fullname && prof.lists.experiences.length === 0;
+        if (!localStorage.getItem(ONBOARDED_KEY) && isEmpty) {
+            openGuideModal(0);
+        }
+    } catch {
+        // Ignore storage restrictions
+    }
+}
+
+function openGuideModal(step = 0) {
+    guideStepIndex = step;
+    renderGuideStep();
+    document.getElementById('guide-modal').classList.remove('hidden');
+}
+
+function closeGuideModal() {
+    document.getElementById('guide-modal').classList.add('hidden');
+    try { localStorage.setItem(ONBOARDED_KEY, '1'); } catch {}
+}
+
+function renderGuideStep() {
+    const lang = (activeProfile() && activeProfile().lang) || 'tr';
+    const dict = I18N[lang] || I18N.tr;
+    const step = GUIDE_STEPS[guideStepIndex] || GUIDE_STEPS[0];
+
+    const imgEl = document.getElementById('guide-step-img');
+    const titleEl = document.getElementById('guide-step-title');
+    const descEl = document.getElementById('guide-step-desc');
+    const prevBtn = document.getElementById('guide-prev-btn');
+    const nextBtn = document.getElementById('guide-next-btn');
+
+    if (imgEl) imgEl.src = step.img;
+    if (titleEl) titleEl.textContent = step.title[lang] || step.title.tr;
+    if (descEl) descEl.textContent = step.desc[lang] || step.desc.tr;
+
+    document.querySelectorAll('.guide-pill').forEach((pill, i) => {
+        pill.classList.toggle('active', i === guideStepIndex);
+    });
+
+    if (prevBtn) prevBtn.style.visibility = guideStepIndex === 0 ? 'hidden' : 'visible';
+    if (nextBtn) {
+        nextBtn.textContent = guideStepIndex === GUIDE_STEPS.length - 1 ? dict.guideFinish : dict.guideNext;
+    }
 }
 
 // Section Ordering & Visibility
